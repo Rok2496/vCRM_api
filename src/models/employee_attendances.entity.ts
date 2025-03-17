@@ -3,6 +3,7 @@ import { Column, Entity, JoinColumn, ManyToOne, RelationId } from 'typeorm';
 import { App_Users } from './app_users.entity';
 import { BaseEntity } from './base.entity';
 import { Employees } from './employees.entity';
+import { Master_Work_Day_Types } from './master_work_day_types.entity';
 
 @Entity({ name: ENTITY_NAME.EMPLOYEE_ATTENDANCES })
 export class Employee_Attendances extends BaseEntity {
@@ -38,6 +39,13 @@ export class Employee_Attendances extends BaseEntity {
 
   @Column({ type: 'varchar', length: 250, nullable: true })
   check_out_device_id: string;
+
+  @RelationId((x: Employee_Attendances) => x.work_day_type)
+  work_day_type_id: number;
+
+  @ManyToOne(() => Master_Work_Day_Types, { nullable: true })
+  @JoinColumn({ name: 'work_day_type_id' })
+  work_day_type: Master_Work_Day_Types;
 
   @RelationId((x: Employee_Attendances) => x.manager_approval_user)
   manager_approval_user_id: number;

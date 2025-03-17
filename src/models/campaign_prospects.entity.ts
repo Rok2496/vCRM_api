@@ -9,7 +9,7 @@ import { Data_Repos } from './data_repos.entity';
 @Entity({ name: ENTITY_NAME.CAMPAIGN_PROSPECTS })
 export class Campaign_Prospects extends BaseEntity {
   @Column({ type: 'int', nullable: true })
-  sales_score: number;
+  Prospect_score: number;
 
   @RelationId((x: Campaign_Prospects) => x.campaign)
   campaign_id: number;
@@ -17,6 +17,13 @@ export class Campaign_Prospects extends BaseEntity {
   @ManyToOne(() => Campaigns, (x) => x.campaign_prospects, { nullable: true })
   @JoinColumn({ name: 'campaign_id' })
   campaign: Campaigns;
+
+  @RelationId((x: Campaign_Prospects) => x.voter)
+  voter_id: number;
+
+  @ManyToOne(() => Contacts, { nullable: true })
+  @JoinColumn({ name: 'voter_id' })
+  voter: Contacts;
 
   @RelationId((x: Campaign_Prospects) => x.company)
   company_id: number;

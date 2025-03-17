@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { Contacts } from './contacts.entity';
+import { Data_Repos } from './data_repos.entity';
 import { Zones } from './zones.entity';
 
 @Entity({ name: ENTITY_NAME.ZONE_CONTACTS })
@@ -28,4 +29,11 @@ export class Zone_Contacts extends BaseEntity {
   @ManyToOne(() => Contacts, (x) => x.zone_contacts, { nullable: true })
   @JoinColumn({ name: 'contact_id' })
   contact: Contacts;
+
+  @RelationId((x: Zone_Contacts) => x.data_repository)
+  data_repo_id: number;
+
+  @ManyToOne(() => Data_Repos, { nullable: true })
+  @JoinColumn({ name: 'data_repo_id' })
+  data_repository: Data_Repos;
 }

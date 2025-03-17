@@ -18,6 +18,9 @@ export class Campaigns extends BaseEntity {
   name: string;
 
   @Column({ type: 'varchar', nullable: true })
+  campaign_goal: string;
+
+  @Column({ type: 'varchar', nullable: true })
   description: string;
 
   @Column({ type: 'varchar', length: 1024, nullable: true })
@@ -29,29 +32,29 @@ export class Campaigns extends BaseEntity {
   @Column({ type: 'timestamp', nullable: true })
   end_date: Date;
 
-  @Column({ type: 'varchar', length: 128, nullable: true })
-  duration: string;
+  @Column({ type: 'int', nullable: true })
+  Duration_days: number;
 
   @Column({ type: 'float', nullable: true })
-  projected_revenue: number;
+  projected_donation: number;
 
   @Column({ type: 'float', nullable: true })
-  revenue_earned: number;
+  donation_earned: number;
 
-  @Column({ type: 'int', nullable: true })
-  projected_sales: number;
+  @Column({ type: 'float', nullable: true })
+  projected_reachout: number;
 
-  @Column({ type: 'int', nullable: true })
-  number_of_sales: number;
+  @Column({ type: 'float', nullable: true })
+  reachout_acheived: number;
 
   @Column({ type: 'float', nullable: true })
   campaign_budget: number;
 
-  @Column({ type: 'float', nullable: true })
-  spent_amount: number;
-
   @Column({ type: 'int', nullable: true })
   status_open_closed: number;
+
+  @Column({ type: 'varchar', length: 5000, nullable: true })
+  campaign_tags: string;
 
   @RelationId((x: Campaigns) => x.campaign_manager)
   campaign_manager_employee_id: number;

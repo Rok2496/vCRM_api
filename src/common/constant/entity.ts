@@ -81,6 +81,7 @@ export enum ENTITY_NAME {
   ZONES = 'zones', // issue
   ZONE_AREA_BY_ZIPCODES = 'zone_area_by_zipcodes',
   ZONE_ACCOUNT_TEAMS = 'zone_account_teams',
+  ZONE_TEAMS = 'zone_teams',
   ZONE_COMPANIES = 'zone_companies',
   ZONE_CONTACTS = 'zone_contacts',
   ZONE_PRODUCT_CATEGORIES = 'zone_product_categories',
@@ -102,6 +103,7 @@ export enum ENTITY_NAME {
   TASK_DOCUMENTS = 'task_documents',
   TASK_NOTES = 'task_notes',
   TASK_WORK_ITEMS = 'task_work_items',
+  TASK_TEAMS = 'task_teams',
 
   // 1.5 Employee - 9 --- Mehtab Bhai
   EMPLOYEES = 'employees',
@@ -247,4 +249,26 @@ export enum ENTITY_NAME {
   APP_USER_OTPS = 'app_user_otps',
   // New Tables
   MASTER_LEARNING_GOALS = 'master_learning_goals',
+
+  // CRM Related
+  COMPANY_CONTACT_DATAREPO_MAPS = 'company_contact_datarepo_maps',
+
+  // Voter Related
+  VOTERS = 'Voters',
+  VOTER_TAGS = 'VoterTags',
+  VOTER_ZONES = 'voter_zones',
+  TEAM_WEEKLY_WORK_SCHEDULES = 'team_weekly_work_schedules',
+  EVENT_TEAMS_GUESTS = 'event_teams_guests',
+  EVENT_PAYMENTS = 'event_payments',
+  ARTICLES = 'articles',
+  ARTICLE_MEDIAS = 'article_medias',
+  ARTICLE_TAGS = 'article_tags',
+  ARTICLE_LIKE_COMMENTS = 'article_like_comments',
+  CONTENT_SOCIAL_SHARES = 'content_social_shares',
+  VOTER_FRIENDS_FAMILY = 'voter_friends_family',
+  SURVEYS = 'surveys',
+  SURVEY_QUESTIONS = 'survey_questions',
+  SURVEY_OPTIONS = 'survey_options',
+  SURVEY_RESPONSES = 'survey_responses',
+  SURVEY_ANSWERS = 'survey_answers',
 }

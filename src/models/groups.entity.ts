@@ -12,31 +12,31 @@ import { BaseEntity } from './base.entity';
 import { Group_Members } from './group_members.entity';
 import { Group_Messages } from './group_messages.entity';
 
-@Entity({ name: ENTITY_NAME.GROUPS })
+@Entity('groups')
 export class Groups extends BaseEntity {
-  @Column({ type: 'varchar', length: 512 })
-  group_name: string;
+  @Column({ type: 'varchar', length: 255 })
+  name: string;
 
-  @Column({ type: 'text', nullable: true })
-  group_description: string;
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  description: string;
 
-  @Column({ type: 'varchar', length: 512, nullable: true })
-  group_type: string;
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  image_url: string;
 
-  @Column({ type: 'int', nullable: true })
-  number_of_members: number;
+  @Column({ type: 'boolean', default: true })
+  is_active: boolean;
 
-  @RelationId((x: Groups) => x.created_by_user)
-  create_by_user_id: number;
+  @RelationId((x: Groups) => x.created_by)
+  created_by_id: number;
 
-  @ManyToOne(() => App_Users, (x) => x.groups, { nullable: true })
-  @JoinColumn({ name: 'create_by_user_id' })
-  created_by_user: App_Users;
+  @ManyToOne(() => App_Users, { nullable: true })
+  @JoinColumn({ name: 'created_by_id' })
+  created_by: App_Users;
 
   // External Relations
-  @OneToMany(() => Group_Members, (x) => x.group)
+  @OneToMany(() => Group_Members, (group_members) => group_members.group)
   group_members: Group_Members[];
 
-  @OneToMany(() => Group_Messages, (x) => x.group)
+  @OneToMany(() => Group_Messages, (group_messages) => group_messages.group)
   group_messages: Group_Messages[];
 }

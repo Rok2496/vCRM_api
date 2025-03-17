@@ -15,8 +15,11 @@ import { Employee_Attendances } from './employee_attendances.entity';
 import { Employee_Tags } from './employee_tags.entity';
 import { Group_Members } from './group_members.entity';
 import { Master_Countries } from './master_countries.entity';
+import { Master_Employee_Departments } from './master_employee_departments.entity';
+import { Master_Employee_Job_Titles } from './master_employee_job_titles.entity';
 import { Master_States } from './master_states.entity';
 import { Task_Events } from './task_events.entity';
+import { Tutors } from './tutors.entity';
 import { Zone_Account_Teams } from './zone_account_teams.entity';
 import { Zones } from './zones.entity';
 
@@ -111,6 +114,27 @@ export class Employees extends BaseEntity {
   @ManyToOne(() => App_Users, (x) => x.employees, { nullable: true })
   @JoinColumn({ name: 'user_id' })
   user: App_Users;
+
+  @RelationId((x: Employees) => x.employee_master_department)
+  employee_master_department_id: number;
+
+  @ManyToOne(() => Master_Employee_Departments, { nullable: true })
+  @JoinColumn({ name: 'employee_master_department_id' })
+  employee_master_department: Master_Employee_Departments;
+
+  @RelationId((x: Employees) => x.employee_master_job_title)
+  employee_master_job_title_id: number;
+
+  @ManyToOne(() => Master_Employee_Job_Titles, { nullable: true })
+  @JoinColumn({ name: 'employee_master_job_title_id' })
+  employee_master_job_title: Master_Employee_Job_Titles;
+
+  @RelationId((x: Employees) => x.tutor)
+  tutor_id: number;
+
+  @ManyToOne(() => Tutors, { nullable: true })
+  @JoinColumn({ name: 'tutor_id' })
+  tutor: Tutors;
 
   @OneToMany(() => Task_Events, (x) => x.employee)
   task_events: Task_Events[];

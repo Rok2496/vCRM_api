@@ -6,9 +6,6 @@ import { Employees } from './employees.entity';
 
 @Entity({ name: ENTITY_NAME.CAMPAIGN_TEAMS })
 export class Campaign_Teams extends BaseEntity {
-  @Column({ type: 'boolean' })
-  primary: boolean;
-
   @Column({ type: 'timestamp', nullable: true })
   assigned_date: Date;
 
