@@ -73,6 +73,9 @@ export enum ENTITY_NAME {
   APP_ROLE_PERMISSIONS = 'app_role_permissions',
   APP_USER_CUSTOM_PERMISSIONS = 'app_user_custom_permissions',
   APP_NOTIFICATIONS = 'app_notifications',
+  APP_FEATURES = 'app_features',
+  APP_MENU_ITEMS = 'app_menu_items',
+  APP_ROLE_MENU_ACCESS = 'app_role_menu_access',
 
   // 1.3: Zone - 16 --- Shafin Bhai
   ZONES = 'zones', // issue

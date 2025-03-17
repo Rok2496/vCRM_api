@@ -1,6 +1,6 @@
 import { ENTITY_NAME } from 'src/common/constant';
 import { Column, Entity, JoinColumn, ManyToOne, RelationId } from 'typeorm';
-import { App_Permissions } from './app_permissions.entity';
+import { App_Features } from './app_features.entity';
 import { App_Users } from './app_users.entity';
 import { BaseEntity } from './base.entity';
 
@@ -13,14 +13,14 @@ export class App_User_Custom_Permissions extends BaseEntity {
   @JoinColumn({ name: 'user_id' })
   user: App_Users;
 
-  @RelationId((x: App_User_Custom_Permissions) => x.permission)
-  permission_id: number;
+  @RelationId((x: App_User_Custom_Permissions) => x.feature)
+  feature_id: number;
 
-  @ManyToOne(() => App_Permissions, (x) => x.app_user_custom_permissions)
-  @JoinColumn({ name: 'permission_id' })
-  permission: App_Permissions;
+  @ManyToOne(() => App_Features, (x) => x.app_user_custom_permissions)
+  @JoinColumn({ name: 'feature_id' })
+  feature: App_Features;
 
-  @Column({ type: 'varchar', nullable: true }) // -- e.g., Read, Write, Update, Delete
+  @Column({ type: 'varchar', length: 50 })
   access_level: string;
 
   @Column({ type: 'timestamp' })

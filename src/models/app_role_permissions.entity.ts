@@ -1,5 +1,6 @@
 import { ENTITY_NAME } from 'src/common/constant';
-import { Entity, JoinColumn, ManyToOne, RelationId } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, RelationId } from 'typeorm';
+import { App_Features } from './app_features.entity';
 import { App_Permissions } from './app_permissions.entity';
 import { App_Roles } from './app_roles.entity';
 import { BaseEntity } from './base.entity';
@@ -13,10 +14,22 @@ export class App_Role_permissions extends BaseEntity {
   @JoinColumn({ name: 'role_id' })
   role: App_Roles;
 
-  @RelationId((x: App_Role_permissions) => x.permission)
-  permission_id: number;
+  @RelationId((x: App_Role_permissions) => x.feature)
+  feature_id: number;
 
-  @ManyToOne(() => App_Permissions, (x) => x.app_role_permissions)
-  @JoinColumn({ name: 'permission_id' })
-  permission: App_Permissions;
+  @ManyToOne(() => App_Features, (x) => x.app_role_permissions)
+  @JoinColumn({ name: 'feature_id' })
+  feature: App_Features;
+  
+  @Column({ type: 'boolean', default: false })
+  can_view: boolean;
+  
+  @Column({ type: 'boolean', default: false })
+  can_edit: boolean;
+  
+  @Column({ type: 'boolean', default: false })
+  can_delete: boolean;
+  
+  @Column({ type: 'boolean', default: false })
+  can_approve: boolean;
 }

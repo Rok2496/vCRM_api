@@ -1,5 +1,6 @@
 import { ENTITY_NAME } from 'src/common/constant';
 import { Column, Entity, OneToMany } from 'typeorm';
+import { App_Role_Menu_Access } from './app_role_menu_access.entity';
 import { App_Role_permissions } from './app_role_permissions.entity';
 import { App_User_Roles } from './app_user_roles.entity';
 import { App_Users } from './app_users.entity';
@@ -19,6 +20,9 @@ export class App_Roles extends BaseEntity {
 
   @OneToMany(() => App_Role_permissions, (x) => x.role)
   app_role_permissions: App_Role_permissions[];
+
+  @OneToMany(() => App_Role_Menu_Access, (x) => x.role)
+  app_role_menu_access: App_Role_Menu_Access[];
 
   /* 
   // NOTE: (ID: 01) Reaction
