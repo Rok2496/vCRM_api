@@ -152,7 +152,7 @@ export class App_Users extends BaseEntity {
   @OneToMany(() => Contacts, (x) => x.verified_by_user)
   verified_contacts: Contacts[];
 
-  @OneToMany(() => Groups, (x) => x.created_by_user)
+  @OneToMany(() => Groups, (x) => x.created_by)
   groups: Groups[];
 
   @OneToMany(() => Group_Members, (x) => x.user)

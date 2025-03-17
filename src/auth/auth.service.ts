@@ -76,9 +76,9 @@ export class AuthService {
           'app_user_roles',
           'app_user_roles.role',
           'app_user_roles.role.app_role_permissions',
-          'app_user_roles.role.app_role_permissions.permission',
+          'app_user_roles.role.app_role_permissions.feature',
           'app_user_custom_permissions',
-          'app_user_custom_permissions.permission',
+          'app_user_custom_permissions.feature',
         ],
       });
 
@@ -91,13 +91,13 @@ export class AuthService {
       // Add role permissions
       userWithRoles.app_user_roles?.forEach(ur => {
         ur.role.app_role_permissions?.forEach(rp => {
-          permissions.add(rp.permission.name);
+          permissions.add(rp.feature.name);
         });
       });
 
       // Add custom permissions
       userWithRoles.app_user_custom_permissions?.forEach(cp => {
-        permissions.add(cp.permission.name);
+        permissions.add(cp.feature.name);
       });
 
       const payload = {

@@ -5,9 +5,9 @@ import { IPagination } from './pagination.interface';
 
 export interface IApp_User_Custom_Permission extends IBase {
   user?: IApp_User;
-  permission?: IApp_Permission;
+  feature?: IApp_Permission;
   user_id?: number;
-  permission_id?: number;
+  feature_id?: number;
   access_level?: string;
   assigned_date?: Date;
 }

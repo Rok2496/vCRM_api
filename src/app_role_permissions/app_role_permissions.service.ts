@@ -37,7 +37,7 @@ export class ApplicationRolePermissionsService {
       const { permission, role, ...rest } = data;
       const payload = {
         ...rest,
-        permission: { id: permission },
+        feature: { id: permission },
         role: { id: role },
       };
 
@@ -72,7 +72,7 @@ export class ApplicationRolePermissionsService {
       const res = await this.repository.find({
         where: where,
         relations: {
-          permission: true,
+          feature: true,
         },
         take: query.limit || 10,
         skip: query.skip || 0,
@@ -149,12 +149,12 @@ export class ApplicationRolePermissionsService {
 
       const appPermission = data.hasOwnProperty('permission')
         ? { id: data.permission }
-        : record.permission;
+        : record.feature;
 
       const payload = {
         ...record,
         ...data,
-        permission: appPermission,
+        feature: appPermission,
         role: appRole,
       };
 

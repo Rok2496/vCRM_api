@@ -41,6 +41,20 @@ export class Group_Members extends BaseEntity {
   @ManyToOne(() => App_Users)
   @JoinColumn({ name: 'user_id' })
   user: App_Users;
+  
+  @RelationId((x: Group_Members) => x.employee)
+  employee_id: number;
+
+  @ManyToOne(() => Employees, (x) => x.group_members, { nullable: true })
+  @JoinColumn({ name: 'employee_id' })
+  employee: Employees;
+  
+  @RelationId((x: Group_Members) => x.contact)
+  contact_id: number;
+
+  @ManyToOne(() => Contacts, (x) => x.group_members, { nullable: true })
+  @JoinColumn({ name: 'contact_id' })
+  contact: Contacts;
 
   // External Relations
   @OneToMany(() => Group_Messages, (x) => x.group_member)

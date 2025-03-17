@@ -179,7 +179,7 @@ export class ApplicationRolesService {
         where: { id },
         relations: {
           app_role_permissions: {
-            permission: true,
+            feature: true,
           },
         },
       });
@@ -190,7 +190,7 @@ export class ApplicationRolesService {
 
       // Convert current permissions into a Map for faster lookups
       const currentPermissionsMap = new Map(
-        role.app_role_permissions.map((x) => [x.permission.name, x.id]),
+        role.app_role_permissions.map((x) => [x.feature.name, x.id]),
       );
 
       // Convert input permissions to a Set for O(1) lookups
@@ -216,7 +216,7 @@ export class ApplicationRolesService {
 
           const newRolePermissions = newPermissions.map((permission) => {
             return Object.assign(new App_Role_permissions(), {
-              permission: { id: permission.id } as any,
+              feature: { id: permission.id } as any,
               role: { id } as any,
             });
           });
@@ -252,16 +252,16 @@ export class ApplicationRolesService {
       const res = await this.rolePermissionRepository.find({
         where: {
           role: Equal(id),
-          permission: {
+          feature: {
             name: In(filter.permissions || []),
           },
         },
         relations: {
-          permission: true,
+          feature: true,
         },
       });
 
-      const result = res.map((x) => x.permission.name);
+      const result = res.map((x) => x.feature.name);
 
       return result;
     } catch (err) {

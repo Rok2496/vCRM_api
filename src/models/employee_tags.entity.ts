@@ -4,7 +4,7 @@ import { BaseEntity } from './base.entity';
 import { Employees } from './employees.entity';
 import { Master_Tag_Categories } from './master_tag_categories.entity';
 import { Master_Tags } from './master_tags.entity';
-import { Tutors } from './tutors.entity';
+
 
 @Entity({ name: ENTITY_NAME.EMPLOYEE_TAGS })
 export class Employee_Tags extends BaseEntity {
@@ -27,12 +27,7 @@ export class Employee_Tags extends BaseEntity {
   @JoinColumn({ name: 'employee_id' })
   employee: Employees;
 
-  @RelationId((x: Employee_Tags) => x.tutor)
-  tutor_id: number;
 
-  @ManyToOne(() => Tutors, { nullable: true })
-  @JoinColumn({ name: 'tutor_id' })
-  tutor: Tutors;
 
   @RelationId((x: Employee_Tags) => x.master_tag_category)
   master_tag_category_id: number;

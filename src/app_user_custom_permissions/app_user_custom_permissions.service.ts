@@ -41,7 +41,7 @@ export class ApplicationUserCustomPermissionsService {
       const payload = {
         ...rest,
         user: { id: userId },
-        permission: { id: permission },
+        feature: { id: permission },
       };
 
       const newRecord = this.repository.create(payload);
@@ -145,13 +145,13 @@ export class ApplicationUserCustomPermissionsService {
 
       const appPermission = data.hasOwnProperty('permission')
         ? { id: data.permission }
-        : record.permission;
+        : record.feature;
 
       const payload = {
         ...record,
         ...data,
         user: appUser,
-        permission: appPermission,
+        feature: appPermission,
       };
 
       return await this.repository.save(payload);

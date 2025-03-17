@@ -3,6 +3,7 @@ import { Column, Entity, JoinColumn, ManyToOne, RelationId } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { App_Users } from './app_users.entity';
 import { Tasks } from './tasks.entity';
+import { Task_Events } from './task_events.entity';
 
 @Entity('task_notes')
 export class Task_Notes extends BaseEntity {
@@ -25,4 +26,11 @@ export class Task_Notes extends BaseEntity {
   @ManyToOne(() => Tasks, { nullable: true })
   @JoinColumn({ name: 'task_id' })
   task: Tasks;
+  
+  @RelationId((x: Task_Notes) => x.task_event)
+  task_event_id: number;
+
+  @ManyToOne(() => Task_Events, (x) => x.task_notes, { nullable: true })
+  @JoinColumn({ name: 'task_event_id' })
+  task_event: Task_Events;
 }

@@ -3,6 +3,7 @@ import { Column, Entity, JoinColumn, ManyToOne, RelationId } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { App_Users } from './app_users.entity';
 import { Groups } from './groups.entity';
+import { Group_Members } from './group_members.entity';
 
 @Entity('group_messages')
 export class Group_Messages extends BaseEntity {
@@ -34,4 +35,11 @@ export class Group_Messages extends BaseEntity {
   @ManyToOne(() => App_Users)
   @JoinColumn({ name: 'sender_id' })
   sender: App_Users;
+  
+  @RelationId((x: Group_Messages) => x.group_member)
+  group_member_id: number;
+
+  @ManyToOne(() => Group_Members, (x) => x.group_messages, { nullable: true })
+  @JoinColumn({ name: 'group_member_id' })
+  group_member: Group_Members;
 }

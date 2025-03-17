@@ -12,6 +12,7 @@ import { Master_Cities } from './master_cities.entity';
 import { Master_Countries } from './master_countries.entity';
 import { Master_States } from './master_states.entity';
 import { Master_Zip_Codes } from './master_zip_codes.entity';
+import { Zones } from './zones.entity';
 
 @Entity({ name: ENTITY_NAME.MASTER_COUNTY })
 export class Master_Counties extends BaseEntity {
@@ -42,4 +43,7 @@ export class Master_Counties extends BaseEntity {
 
   @OneToMany(() => Master_Zip_Codes, (zip_code) => zip_code.master_county)
   master_zip_codes: Master_Zip_Codes[];
+  
+  @OneToMany(() => Zones, (zone) => zone.county)
+  zones: Zones[];
 }

@@ -13,9 +13,9 @@ export class App_Permissions extends BaseEntity {
   description: string;
 
   // External Relations
-  @OneToMany(() => App_Role_permissions, (x) => x.permission)
+  @OneToMany(() => App_Role_permissions, (x) => x.feature)
   app_role_permissions: App_Role_permissions[];
 
-  @OneToMany(() => App_User_Custom_Permissions, (x) => x.permission)
+  @OneToMany(() => App_User_Custom_Permissions, (x) => x.feature)
   app_user_custom_permissions: App_User_Custom_Permissions[];
 }
