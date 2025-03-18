@@ -34,6 +34,7 @@ import { MasterConnectChannelsModule } from './master_connect_channels/master_co
 import { MasterContactTypesModule } from './master_contact_types/master_contact_types.module';
 import { MasterCountiesModule } from './master_counties/master_counties.module';
 import { MasterCountriesModule } from './master_countries/master_countries.module';
+import { MasterPhotoLibrariesModule } from './master_photo_libraries/master_photo_libraries.module';
 import { MasterStatesModule } from './master_states/master_states.module';
 import { MasterTagCategoriesModule } from './master_tag_categories/master_tag_categories.module';
 import { MasterTagsModule } from './master_tags/master_tags.module';
@@ -41,11 +42,20 @@ import { MasterTaskStatusesModule } from './master_task_statuses/master_task_sta
 import { MasterVideoLibrariesModule } from './master_video_libraries/master_video_libraries.module';
 import { MasterZipCodesModule } from './master_zip_codes/master_zip_codes.module';
 import { MasterZoneTypesModule } from './master_zone_types/master_zone_types.module';
-import { WebhooksModule } from './webhooks/webhooks.module';
-import { MasterPhotoLibrariesModule } from './master_photo_libraries/master_photo_libraries.module';
+import { TaskNotesModule } from './task_notes/task_notes.module';
+import { TasksModule } from './tasks/tasks.module';
+import { TeamWeeklyWorkSchedulesModule } from './team_weekly_work_schedules/team_weekly_work_schedules.module';
+import { VoterFriendsFamilyModule } from './voter_friends_family/voter_friends_family.module';
 import { VoterTagsModule } from './voter_tags/voter_tags.module';
 import { VoterZonesModule } from './voter_zones/voter_zones.module';
 import { VotersModule } from './voters/voters.module';
+import { WebhookDataModule } from './webhook_data/webhook_data.module';
+import { WebhooksModule } from './webhooks/webhooks.module';
+import { ZoneAccountTeamsModule } from './zone_account_teams/zone_account_teams.module';
+import { ZoneAreaByZipcodesModule } from './zone_area_by_zipcodes/zone_area_by_zipcodes.module';
+import { ZoneCompaniesModule } from './zone_companies/zone_companies.module';
+import { ZoneContactsModule } from './zone_contacts/zone_contacts.module';
+import { ZoneTeamsModule } from './zone_teams/zone_teams.module';
 import { ZonesModule } from './zones/zones.module';
 
 @Module({
@@ -53,6 +63,7 @@ import { ZonesModule } from './zones/zones.module';
     TypeOrmModule.forRoot(dbConfigService.getTypeOrmConfig()),
     SentryModule.forRoot(),
     WebhooksModule,
+    WebhookDataModule,
     AuthModule,
     FilesCloudinaryModule,
     MasterPhotoLibrariesModule,
@@ -80,9 +91,18 @@ import { ZonesModule } from './zones/zones.module';
     DataReposModule,
     EmailOtpModule,
     MasterTaskStatusesModule,
+    TaskNotesModule,
+    TasksModule,
+    TeamWeeklyWorkSchedulesModule,
+    VoterFriendsFamilyModule,
     VoterTagsModule,
     VoterZonesModule,
     VotersModule,
+    ZoneAccountTeamsModule,
+    ZoneAreaByZipcodesModule,
+    ZoneCompaniesModule,
+    ZoneContactsModule,
+    ZoneTeamsModule,
     ZonesModule
   ],
   controllers: [AppController],
