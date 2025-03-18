@@ -46,3 +46,6 @@ export * from './campaign_prospects.entity';
 export * from './campaign_teams.entity';
 export * from './campaigns.entity';
 export * from './data_repos.entity';
+export * from './voters.entity';
+export * from './voter_tags.entity';
+export * from './voter_zones.entity';

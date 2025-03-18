@@ -43,6 +43,11 @@ import { MasterZipCodesModule } from './master_zip_codes/master_zip_codes.module
 import { MasterZoneTypesModule } from './master_zone_types/master_zone_types.module';
 import { WebhooksModule } from './webhooks/webhooks.module';
 import { MasterPhotoLibrariesModule } from './master_photo_libraries/master_photo_libraries.module';
+import { VoterTagsModule } from './voter_tags/voter_tags.module';
+import { VoterZonesModule } from './voter_zones/voter_zones.module';
+import { VotersModule } from './voters/voters.module';
+import { ZonesModule } from './zones/zones.module';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot(dbConfigService.getTypeOrmConfig()),
@@ -74,7 +79,11 @@ import { MasterPhotoLibrariesModule } from './master_photo_libraries/master_phot
     ApplicationNotificationsModule,
     DataReposModule,
     EmailOtpModule,
-    MasterTaskStatusesModule
+    MasterTaskStatusesModule,
+    VoterTagsModule,
+    VoterZonesModule,
+    VotersModule,
+    ZonesModule
   ],
   controllers: [AppController],
   providers: [

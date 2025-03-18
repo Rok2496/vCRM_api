@@ -30,14 +30,15 @@ async function bootstrap() {
 
   // if (process.env.NODE_ENV !== 'production') {
   const config = new DocumentBuilder()
-    .setTitle('TutorsPlan backend Api')
-    .setDescription('This api will help clients to store their data.')
+    .setTitle('V_CRM API')
+    .setDescription('API for managing voter data, zones, and related operations.')
     .setVersion('1.0')
-    .addTag('TutorsPlan')
+    .addTag('V_CRM')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   fs.writeFileSync('./swagger-spec.json', JSON.stringify(document));
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup('/swagger', app, document);
   // }
 
   app.use(helmet());

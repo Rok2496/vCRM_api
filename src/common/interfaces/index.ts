@@ -50,3 +50,6 @@ export * from './campaign_prospects.interface';
 export * from './campaign_teams.interface';
 export * from './campaigns.interface';
 export * from './data_repos.interface';
+export * from './voter_tags.interface';
+export * from './voters.interface';
+export * from './voter_zones.interface';
